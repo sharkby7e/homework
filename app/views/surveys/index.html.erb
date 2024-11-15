@@ -1,5 +1,15 @@
 <h1>SURVEYS</h1>
 
-<% @surveys.each do |s| %>
-  <%= link_to s.question, survey_path(s) %>
+<div>
+  <%= link_to "Create a new survey", new_survey_path %>
+</div>
+</br>
+
+<div>
+  ------------CREATED SURVEYS-------------
+</div>
+
+</br>
+<% @surveys.each do |survey| %>
+  <%= link_to survey.question, survey_path(survey) %><br>
 <% end %>
