@@ -10,6 +10,25 @@ RSpec.describe SurveysController, type: :request do
       expect(response).to be_successful
       expect(response.body).to have_link survey.question, href: survey_path(survey)
     end
+
+    it 'includes percentages of answers for the survey' do
+      survey = create(:survey)
+      create_list(:survey_response, 3, survey: survey, answer: 'yes')
+      create_list(:survey_response, 1, survey: survey, answer: 'no')
+
+      get surveys_path
+
+      expect(response.body).to have_content '25%'
+      expect(response.body).to have_content '75%'
+    end
+
+    it 'works even with no votes' do
+      create(:survey)
+
+      get surveys_path
+
+      expect(response).to be_successful
+    end
   end
 
   describe '#show' do

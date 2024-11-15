@@ -12,4 +12,8 @@
 </br>
 <% @surveys.each do |survey| %>
   <%= link_to survey.question, survey_path(survey) %><br>
+  <%= (@survey_responses[survey.id][:yes]) %>% yes
+  <%= (@survey_responses[survey.id][:no]) %>% no
+  <br>
+  <br>
 <% end %>
