@@ -1,4 +1,7 @@
 # README
+migrate
+`rails db:migrate`
+
 bundle dependencies
 `bundle install`
 
