@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe SurveysController, type: :request do
   describe '#index' do
-    it 'includes links to surveys' do
+    it 'includes links to surveys on the root path' do
       survey = create(:survey)
 
-      get surveys_path
+      get root_path
 
       expect(response).to be_successful
       expect(response.body).to have_link survey.question, href: survey_path(survey)
