@@ -6,8 +6,11 @@ RSpec.describe SurveyResponsesController, type: :request do
 
     let(:params) do
       {
-        survey_id: survey.id,
-        answer: 'no'
+        survey_response:
+        {
+          survey_id: survey.id,
+          answer: 'no'
+        }
       }
     end
 
