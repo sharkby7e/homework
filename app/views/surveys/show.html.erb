@@ -1,6 +1,7 @@
 <h1><%= @survey.question %></h1>
-<%= button_to "Yes", survey_responses_path, params: {survey_response: {survey_id: @survey.id, answer: 'yes'}} %>
-<%= button_to "No", survey_responses_path, params: {survey_response: {survey_id: @survey.id, answer: 'no'}} %>
+<% @survey_choices.each do |choice| %>
+  <%= button_to choice.choice, survey_responses_path, params: {survey_response: {survey_id: @survey.id, survey_choice_id: choice.id}} %>
+<% end %>
 <br>
 <br>
 <%= link_to "All surveys", surveys_path %>
